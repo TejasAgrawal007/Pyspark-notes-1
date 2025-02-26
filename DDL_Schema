@@ -1,0 +1,41 @@
+df.printSchema()
+
+root
+ |-- Item_Identifier: string (nullable = true)
+ |-- Item_Weight: double (nullable = true)
+ |-- Item_Fat_Content: string (nullable = true)
+ |-- Item_Visibility: double (nullable = true)
+ |-- Item_Type: string (nullable = true)
+ |-- Item_MRP: double (nullable = true)
+ |-- Outlet_Identifier: string (nullable = true)
+ |-- Outlet_Establishment_Year: integer (nullable = true)
+ |-- Outlet_Size: string (nullable = true)
+ |-- Outlet_Location_Type: string (nullable = true)
+ |-- Outlet_Type: string (nullable = true)
+ |-- Item_Outlet_Sales: double (nullable = true)
+
+
+
+
+DDL Schema
+
+my_ddl_schema = '''     Item_Identifier string,
+                        Item_Weight string,
+                        Item_Fat_Content string,
+                        Item_Visibility double,
+                        Item_Type string,
+                        Item_MRP double,
+                        Outlet_Identifier string,
+                        Outlet_Establishment_Year integer,
+                        Outlet_Size string,
+                        Outlet_Location_Type string,
+                        Outlet_Type string,
+                        Item_Outlet_Sales double
+
+                ''' 
+
+
+df = spark.read.format('csv')\
+            .schema(my_ddl_schema)\
+            .option('header','true')\
+            .load('/FileStore/tables/BigMart_Sales.csv')
