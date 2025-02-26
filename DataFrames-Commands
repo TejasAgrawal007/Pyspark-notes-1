@@ -1,0 +1,12 @@
+Data Reading CSV
+df = spark.read.format('csv').option('InferSchema','True').option('header','true').load('/FileStore/tables/BigMart_Sales.csv')
+df.display();
+
+Json Reading Data
+df_json = spark.read.format('json')\
+             .option('inferschema','true')\
+             .option('multiline','false')\
+            .load('/FileStore/tables/drivers.json') 
+
+df_json.display();
+
