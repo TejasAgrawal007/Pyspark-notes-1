@@ -6,3 +6,5 @@ df.filter(col('Item_Fat_Content') =='Regular').display()
 
 df.filter((col('Item_MRP') == 'Soft Drinks') & (col('Item_Weight')<10)).display()
 
+df.filter((col('Outlet_Location_Type').isNull()) & (col('Outlet_Type').isin('Tier 1','Tier 2'))).display()
+
