@@ -1,0 +1,2 @@
+df.withColumnRenamed('Item_Weight','Item_Wt').display()
+df.withColumn('Aggregate',col('Item_Weight')*col('Item_Visibility')).display()
