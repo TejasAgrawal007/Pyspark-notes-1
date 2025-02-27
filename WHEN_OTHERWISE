@@ -1,0 +1,11 @@
+from pyspark.sql.functions import col, when
+df.withColumn('veg_flag',when(col('Item_Type')=='Meat','Non-Veg').otherwise('Veg')).display()
+df.printSchema()
+
+
+df = df.withColumn('veg_exp_flag', 
+                   when((col('veg_flag') == 'Veg') & (col('Item_MRP')< 100), 'Veg_Inexpensive')\
+                   .when((col('veg_flag') == 'Veg') & (col('Item_MRP')> 100), 'Veg_Expensive')\
+                   .otherwise('Non_Veg')
+                  )
+
