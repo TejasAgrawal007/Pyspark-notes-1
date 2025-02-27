@@ -1,3 +1,16 @@
 df.drop('Item_Weight').display()
 df.drop('Item_Weight','Item_MRP').display()
 df.drop(col('Item_Weight'),col('Item_MRP')).display()
+
+### DROP RECORDS
+
+df.dropna('all').display()
+df.dropna('any').display()
+df.dropna(subset=['Order_Type']).display()
+
+###REPLACING Null value with some known name
+df.fillna('Not Avialable').display()
+df.fillna('Krishna').display()
+
+
+
