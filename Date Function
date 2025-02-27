@@ -1,0 +1,5 @@
+df = df.withColumn('curr_date',current_date())
+df.display()
+
+df = df.withColumn('week after',date_add('curr_date',7))
+df.display()
