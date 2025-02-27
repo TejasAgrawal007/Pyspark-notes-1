@@ -1,0 +1,2 @@
+df.select(initcap('Item_MRP')).display()
+df.select(upper("Item_MRP").alias('UPPER LETTER')).display()
