@@ -1,0 +1,18 @@
+## Create DataFrame
+
+data = [('user1','book1'),
+        ('user1','book2'),
+        ('user2','book2'),
+        ('user2','book4'),
+        ('user3','book1')]
+
+schema = 'user string, book string'
+
+df_book = spark.createDataFrame(data,schema)
+
+df_book.display()
+
+---------------------------------------------------
+
+df_book.groupBy('user').agg(collect_list('book')).display()
+
