@@ -1,0 +1,1 @@
+df_exp.withColumn('Type1_flag',array_contains('Item_Outlet_Sales','Type1')).display()
