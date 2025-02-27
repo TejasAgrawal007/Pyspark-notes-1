@@ -1,1 +1,12 @@
+##SUM
+df.groupBy('Item_MRP').agg(sum('Outlet_Identifier')).display()
+
+##Average
+df.groupBy('Item_MRP').agg(avg('Outlet_Identifier')).display()
+
+##GroupBy on Multiple Column
+df.groupBy('Item_MRP','Outlet_Location_Type').agg(sum('Outlet_Identifier').alias('Total_MRP')).display()
+
+df.groupBy('Item_MRP','Outlet_Location_Type').agg(sum('Outlet_Identifier'),avg('Outlet_Identifier')).display()
+
 
