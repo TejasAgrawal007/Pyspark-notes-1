@@ -1,0 +1,41 @@
+data1 = [('1','krish'),
+         ('2','sid')]
+schema1 = 'id STRING, name STRING'
+
+df1 = spark.createDataFrame(data1,schema1)
+
+data2 = [('3','rahul'),
+         ('4','aman')]
+
+schema2 = 'id STRING, name STRING'
+df2 = spark.createDataFrame(data2,schema2)
+
+df1.display()
+df2.display()
+
+result = df1.union(df2)
+
+----------------------------------------------------------------------------------------------------
+
+UNION and UNION BY NAME
+-----------------------
+data1 = [('krish','1'),
+         ('sid','2')]
+schema1 = 'name STRING, id STRING'
+
+df1 = spark.createDataFrame(data1,schema1)
+
+data2 = [('3','rahul'),
+         ('4','aman')]
+
+schema2 = 'id STRING, name STRING'
+df2 = spark.createDataFrame(data2,schema2)   
+
+df1.display()
+df2.display()
+
+df1.unionByName(df2).display()
+
+
+
+
