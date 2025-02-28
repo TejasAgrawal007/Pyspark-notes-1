@@ -1,0 +1,20 @@
+from pyspark.sql.window import  Window
+
+###ROW_Number
+df.withColumn('rowCol',row_number().over(Window.orderBy('Item_Identifier'))).display()
+
+###Rank Number
+df.withColumn('My_rank',rank().over(Window.orderBy('Item_Identifier'))).display()
+
+df.withColumn('My_rank',rank().over(Window.orderBy(col('Item_Identifier').desc()))).display()
+
+####Dense Rank
+df.withColumn('Dense_Rank',dense_rank().over(Window.orderBy(col('Item_Identifier').desc()))).display()
+
+##Rank Vs Dense_Rank
+
+df.withColumn('Rank',rank().over(Window.orderBy(col('Item_Identifier').desc())))\
+        .withColumn('Dense_Rank',dense_rank().over(Window.orderBy(col('Item_Identifier').desc()))).display()
+
+###___Cummulative Sum
+df.withColumn('cum_sum',sum('Item_MRP').over(Window.orderBy('Item_Type').rowsBetween(Window.unboundedPreceding,Window.currentRow))).display()
