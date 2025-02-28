@@ -1,4 +1,4 @@
-dataj1 = [
+data1 = [
     (1, "Alice", 'd01'),
     (2, "Bob", 'd02'),
     (3, "Charlie",'d03'),
@@ -6,16 +6,22 @@ dataj1 = [
     (5, "Eve",'d05')
 ]
 
-schemaj1 = 'emp_id String, emp_name String, dept_id String'
+schema1 = 'emp_id String, emp_name String, dept_id String'
 
-dfj1= spark.createDataFrame(dataj1,schemaj1)
+dfj1= spark.createDataFrame(data1,schema1)
 
 
-dataj2 = [('d01','HR'),
+data2 = [('d01','HR'),
           ('d02','Marketing'),
           ('d03','Account'),
           ('d04','IT'),
           ('d05','Finance')]
 
-schemaj2 = 'dept_id STRING, department STRING'
-dfj2 = spark.createDataFrame(dataj2,schemaj2)          
+schema2 = 'dept_id STRING, department STRING'
+df2 = spark.createDataFrame(data2,schema2)  
+
+
+df1.join(df2,df1['dept_id']==df2['dept_id'],'inner').display()
+df1.join(df2,df1['dept_id']==df2['dept_id'],'left').display()
+df1.join(df2,df1['dept_id']==df2['dept_id'],'right').display()
+df1.join(df2,df1['dept_id']==df2['dept_id'],'anti').display()
