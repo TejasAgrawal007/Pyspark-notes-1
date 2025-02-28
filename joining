@@ -9,3 +9,13 @@ dataj1 = [
 schemaj1 = 'emp_id String, emp_name String, dept_id String'
 
 dfj1= spark.createDataFrame(dataj1,schemaj1)
+
+
+dataj2 = [('d01','HR'),
+          ('d02','Marketing'),
+          ('d03','Account'),
+          ('d04','IT'),
+          ('d05','Finance')]
+
+schemaj2 = 'dept_id STRING, department STRING'
+dfj2 = spark.createDataFrame(dataj2,schemaj2)          
