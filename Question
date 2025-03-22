@@ -1,0 +1,9 @@
+'''  Find the Previous Employee’s Salary for Each Employee
+👉 Goal: For each employee, find the salary of the previous employee based on their id ordering.'''
+
+from pyspark.sql.functions import *
+
+w4 = Window.orderBy("id")
+
+result = df.withColumn("previous_salary", lag("salary", 1).over(w4))
+result.display()
