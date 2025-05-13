@@ -19,4 +19,4 @@ MTD
 
 > month Target Reached = ``` var month_with_target_reached = Filter(all('Calender'), [Variance] > 0)
                               return
-                                  countrows(month_with_target_reached0
+                                  countrows(month_with_target_reached)```
